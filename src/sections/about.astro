@@ -1,0 +1,56 @@
+---
+
+---
+
+<section id="about_me">
+  <h3 class="title-section">sobre mi</h3>
+  <div>
+    <img src="perfil.jpeg" alt="" />
+    <p>
+      ¡Hola! Me llamo Álvaro Martínez González y soy estudiante de Ingeniería
+      Civil en Computación en la Universidad de Chile, en mi último año. Soy
+      apasionado por el desarrollo de aplicaciones, tanto en plataformas móviles
+      como web. Además, tengo experiencia en análisis de riesgos y cuento con la
+      capacidad de adaptarme a una gran variedad de ambientes. Me gusta
+      enfrentar nuevos desafíos y trabajar en entornos dinámicos y en constante
+      cambio.
+    </p>
+  </div>
+</section>
+
+<style>
+  section {
+    width: 100%;
+    max-width: 920px;
+    gap: 50px;
+    align-items: left;
+    min-height: calc(100vh);
+    gap: 20px;
+    display: flex;
+  }
+  
+  img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+  }
+
+  div{
+    display: flex;
+    gap: 50px;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  @media (max-width: 600px) {
+    div {
+      flex-direction: column;
+    }
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: var(--text);
+    font-weight: 500;
+  }
+</style>

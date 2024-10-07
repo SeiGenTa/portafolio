@@ -1,0 +1,38 @@
+---
+import CardProject from "../components/cardsProjects.astro";
+---
+
+<section id="projects">
+  <h3 class="title-section">Proyectos</h3>
+  <div>
+    <CardProject
+      title="Clon mercado libre"
+      description="Este es un clon con el proposito de demostrar mi habilidad creado aplicaciones web y utilizando apis."
+      image="mercado_libre.png"
+      url="https://clon-mercado-libre-phi.vercel.app"
+    />
+    <CardProject
+      title="Alara"
+      description="Alara es un startup que esta innovando en el ambito de la seguridad de las personas"
+      image="alara.png"
+      url="https://alara.cl"
+    />
+  </div>
+</section>
+
+<style>
+  section {
+    width: 100%;
+    max-width: 920px;
+    gap: 10px;
+    align-items: left;
+    min-height: calc(100vh - 60px);
+    gap: 20px;
+  }
+  div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    justify-items: center;
+  }
+</style>
