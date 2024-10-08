@@ -1,0 +1,57 @@
+---
+interface CardSkills {
+  title: string;
+  image: string;
+  skills: string[];
+  skills_image: string[];
+}
+
+const { title, image, skills, skills_image } = Astro.props;
+---
+
+<div class="skill" tabindex="0">
+  <img src={image} alt="" />
+  <h3>{title}</h3>
+
+  <div class="tecnology">
+    <ul>
+      {
+        skills.map((skill: string, index: number) => (
+          <li>
+            <p>{skill}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>
+
+<style>
+  h3 {
+    margin: 10px;
+  }
+  .skill {
+    width: 250px;
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: flex-start;
+    gap: 10px;
+    background-color: var(--green-primary);
+    border-radius: 20px;
+    overflow: hidden;
+    interpolate-size: allow-keywords;
+    transition: all 0.3s;
+  }
+  img {
+    width: 250px;
+    height: 100px;
+    object-fit: cover;
+  }
+  .skill:focus {
+    transform: scale(1.05);
+    height: auto;
+    outline: none; /* Esto elimina el contorno predeterminado de enfoque */
+  }
+</style>

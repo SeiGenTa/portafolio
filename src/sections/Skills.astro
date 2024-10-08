@@ -1,0 +1,75 @@
+---
+import CardSkills from "../components/cardSkills.astro";
+---
+
+<section id="skills">
+  <h3 class="title-section">habilidades</h3>
+  <div>
+    <CardSkills
+      title="Frontend"
+      image="frontend.png"
+      skills={["HTML", "CSS", "JavaScript", "TypeScripts", "React", "Astro"]}
+      skills_image={[
+        "html.png",
+        "css.png",
+        "javascript.png",
+        "react.png",
+        "astro.png",
+      ]}
+    />
+    <CardSkills
+      title="Backend"
+      image="backend.png"
+      skills={["Python", "JavaScript", "TypeScripts", "NodeJs", "Express"]}
+      skills_image={[
+        "html.png",
+        "css.png",
+        "javascript.png",
+        "react.png",
+        "astro.png",
+      ]}
+    />
+    <CardSkills
+      title="Database"
+      image="db.png"
+      skills={["MongoDB", "PostgreSQL", "MySQL", "Firebase", "Sqlite"]}
+      skills_image={[
+        "html.png",
+        "css.png",
+        "javascript.png",
+        "react.png",
+        "astro.png",
+      ]}
+    />
+    <CardSkills
+      title="Machine Learning"
+      image="machine-learning.png"
+      skills={["python", "scikit-learn", "pandas", "numpy"]}
+      skills_image={[
+        "html.png",
+        "css.png",
+        "javascript.png",
+        "react.png",
+        "astro.png",
+      ]}
+    />
+  </div>
+</section>
+
+<style>
+  section {
+    width: 100%;
+    max-width: 920px;
+    gap: 10px;
+    align-items: left;
+    min-height: calc(100vh - 60px);
+    gap: 20px;
+  }
+  div {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    row-gap: 20px;
+    justify-content: center; /* Centrará los elementos si hay pocos o uno solo */
+    justify-items: center; /* Opcional, mantiene los ítems alineados horizontalmente */
+  }
+</style>
