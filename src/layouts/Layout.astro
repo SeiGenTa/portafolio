@@ -10,7 +10,7 @@ const { title } = Astro.props;
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta name="description" content="Portafolio dev Alvaro Martinez" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
@@ -22,12 +22,11 @@ const { title } = Astro.props;
   </head>
   <body>
     <div class="app-bar">
-      <div class="image-perfil">
+      <a href="#init" class="image-perfil">
         <img src="perfil.jpeg" alt="" />
         <h3>Alvaro martinez</h3>
-      </div>
+      </a>
       <div class="directions">
-        <a href="#init">Inicio</a>
         <a href="#about_me">Acerca de</a>
         <a href="#skills">Habilidades</a>
         <a href="#projects">Proyectos</a>
@@ -36,7 +35,6 @@ const { title } = Astro.props;
       <div class="show-directions">
         <span class="material-symbols-outlined"> menu </span>
         <div class="directions-nav-bar">
-          <a href="#init">Inicio</a>
           <a href="#about_me">Acerca de</a>
           <a href="#skills">Habilidades</a>
           <a href="#projects">Proyectos</a>
@@ -64,6 +62,12 @@ const { title } = Astro.props;
       --green-secundary: #50c878;
       --background: #2b2b2b;
       --text: #f5f5f5;
+    }
+
+    .align-center{
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .title-section {
@@ -131,6 +135,7 @@ const { title } = Astro.props;
       gap: 20px;
       flex-direction: row;
       align-items: center;
+      text-decoration: none;
     }
     .image-perfil img {
       height: 40px;
@@ -200,11 +205,11 @@ const { title } = Astro.props;
         gap: 10px;
       }
 
-      .show-directions span{
+      .show-directions span {
         transition: transform 0.3s;
       }
 
-      .show-directions:hover span{
+      .show-directions:hover span {
         transform: rotateZ(90deg);
       }
 
