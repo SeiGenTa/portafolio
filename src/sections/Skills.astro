@@ -3,86 +3,71 @@ import CardSkills from "../components/cardSkills.astro";
 ---
 
 <section id="skills">
-  <h3 class="title-section">habilidades</h3>
-  <div>
+  <h3 class="title-section">Habilidades</h3>
+  
+  <div class="skills-container">
     <CardSkills
       title="Frontend"
       image="frontend.png"
-      skills={["HTML", "CSS", "JavaScript", "TypeScripts", "React", "Astro"]}
+      skills={["HTML", "CSS", "JavaScript", "TypeScript", "React", "Astro"]}
       skills_image={[
         "html.png",
         "css.png",
         "javascript.png",
+        "typescript.png",
         "react.png",
-        "astro.png",
+        "astro.png"
       ]}
     />
+
     <CardSkills
       title="Backend"
       image="backend.png"
-      skills={["Python", "JavaScript", "TypeScripts", "NodeJs", "Express"]}
+      skills={["Python", "Node.js", "Express", "FastAPI", "Flask", "Django"]}
       skills_image={[
-        "html.png",
-        "css.png",
-        "javascript.png",
-        "react.png",
-        "astro.png",
+        "python.png",
+        "nodejs.png",
+        "express.png",
+        "fastapi.png",
+        "flask.png",
+        "django.png"
       ]}
     />
+
     <CardSkills
       title="Database"
       image="db.png"
-      skills={["MongoDB", "PostgreSQL", "MySQL", "Firebase", "Sqlite"]}
+      skills={["MongoDB", "PostgreSQL", "MySQL", "Firebase", "SQLite"]}
       skills_image={[
-        "html.png",
-        "css.png",
-        "javascript.png",
-        "react.png",
-        "astro.png",
+        "mongodb.png",
+        "postgresql.png",
+        "mysql.png",
+        "firebase.png",
+        "sqlite.png"
       ]}
     />
-    <CardSkills
-      title="Machine Learning"
-      image="machine-learning.png"
-      skills={["python", "scikit-learn", "pandas", "numpy"]}
-      skills_image={[
-        "html.png",
-        "css.png",
-        "javascript.png",
-        "react.png",
-        "astro.png",
-      ]}
-    />
-    <CardSkills
-      title="Mobile"
-      image="mobile.jpg"
-      skills={[
-        "Flutter",
-        "Dart",
-      ]}
-      skills_image={[
-        "html.png",
-        "css.png",
-        "javascript.png",
-        "react.png",
-        "astro.png",
-      ]}
   </div>
 </section>
 
 <style>
-  section {
-    width: 100%;
-    max-width: 920px;
-    align-items: left;
-    padding-top: 60px;
-    gap: 20px;
+  #skills {
+    padding: 80px 0;
+    max-width: 1200px;
+    margin: 0 auto;
   }
-  div {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    row-gap: 20px;
-    justify-content: center; /* Centrará los elementos si hay pocos o uno solo */
-    justify-items: center; /* Opcional, mantiene los ítems alineados horizontalmente */
+
+  .skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  .title-section {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--text);
   }
 </style>
