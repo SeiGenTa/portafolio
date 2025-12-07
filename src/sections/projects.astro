@@ -3,8 +3,11 @@ import CardProject from "../components/cardsProjects.astro";
 ---
 
 <section id="projects">
-  <h3 class="title-section">Proyectos</h3>
-  <div>
+  <div class="projects-header">
+    <h3 class="title-section">Proyectos</h3>
+    <p class="section-subtitle">Algunos de mis trabajos más destacados</p>
+  </div>
+  <div class="projects-grid">
     <CardProject
       title="CLON MERCADO LIBRE"
       description="Este proyecto es un clon diseñado para mostrar mi experiencia y habilidades en el desarrollo de aplicaciones web, integrando diversas APIs para crear soluciones funcionales y eficientes. A través de este trabajo, reflejo mi capacidad para implementar tecnologías modernas en entornos web."
@@ -33,19 +36,54 @@ import CardProject from "../components/cardsProjects.astro";
 </section>
 
 <style>
-  section {
-    padding-top: 60px;
+<style>
+  #projects {
+    padding: 80px 20px;
     width: 100%;
-    max-width: 920px;
-    align-items: left;
-    top: 300px;
-    gap: 20px;
-    padding-bottom: 100px;
+    max-width: 1200px;
+    margin: 0 auto;
   }
-  div {
+
+  .projects-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .title-section {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 12px 0;
+    color: var(--text);
+    letter-spacing: -0.5px;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin: 0;
+    font-weight: 500;
+  }
+
+  .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    justify-items: center;
-    row-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    padding: 0;
   }
+
+  @media (max-width: 768px) {
+    #projects {
+      padding: 60px 16px;
+    }
+
+    .title-section {
+      font-size: 1.75rem;
+    }
+
+    .projects-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+</style>
 </style>
