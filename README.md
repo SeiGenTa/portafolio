@@ -13,4 +13,4 @@ Este es mi portafolio personal creado con **Astro**, donde muestro los proyectos
 - Animaciones suaves y efectos visuales atractivos.
 
 ## LINK
-https://portafolio-git-main-seigentas-projects.vercel.app/
+https://seigenta.cl/
