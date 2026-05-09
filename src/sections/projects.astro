@@ -1,5 +1,6 @@
 ---
 import CardProject from "../components/cardsProjects.astro";
+import CardsProjectsModal from "../components/cardsProjectsModal.astro";
 ---
 
 <section id="projects">
@@ -32,10 +33,22 @@ import CardProject from "../components/cardsProjects.astro";
       image="blog.png"
       url="https://blog.seigenta.cl"
     />
+    <CardsProjectsModal
+      title="GGOO"
+      description="GGOO es una aplicación open source para la comunidad de Volley Beauchef que automatiza el registro a pichangas, gestiona miembros y permite que administradores controlen permisos y validaciones en un solo lugar."
+      details="El proyecto reemplaza el proceso manual por WhatsApp y centraliza la organización de partidos con una experiencia más clara para miembros y administradores. Está construido para crecer con las necesidades de la comunidad y seguir incorporando mejoras como contribuciones y nuevas reglas de participación."
+      image="ggoo.png"
+      highlights={[
+        "Automatiza la inscripción a pichangas y muestra el estado de la lista en tiempo real.",
+        "Incluye gestión de miembros, roles y permisos para administradores.",
+        "Está pensada como una base abierta para seguir evolucionando con la comunidad."
+      ]}
+      techStack={["SvelteKit", "TypeScript", "Prisma", "PostgreSQL", "Docker"]}
+      buttonText="Ver Detalles"
+    />
   </div>
 </section>
 
-<style>
 <style>
   #projects {
     padding: 80px 20px;
@@ -85,5 +98,4 @@ import CardProject from "../components/cardsProjects.astro";
       gap: 24px;
     }
   }
-</style>
 </style>
