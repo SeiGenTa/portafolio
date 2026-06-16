@@ -1,232 +1,321 @@
 ---
-
+import { Image } from "astro:assets";
+import heroBg from "../assets/hero-bg.jpeg";
 ---
 
 <section id="init">
-    <img src="https://images.pexels.com/photos/2647990/pexels-photo-2647990.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="background" class="background-image" />
-    
-    <div class="init-content">
-        <div class="text-wrapper">
-            <div class="badge">Desarrollador Full Stack</div>
-            
-            <h3 class="subtitle">Ingeniero Civil en Computación</h3>
-            
-            <div class="hero-title">
-                <h1>Álvaro<br/><span class="highlight">Martínez</span></h1>
-            </div>
-            
-            <p class="description">
-                Apasionado por crear soluciones tecnológicas innovadoras. Especializado en desarrollo web y móvil, explorando nuevas tecnologías como Astro. Mi objetivo es impactar positivamente a través de la programación.
-            </p>
+  <Image
+    src={heroBg}
+    alt=""
+    class="background-image"
+    loading="eager"
+    fetchpriority="high"
+    sizes="100vw 100vh"
+  />
 
-            <div class="cta-section">
-                <a href="#projects" class="btn btn-primary">Ver Proyectos</a>
-                <a href="https://github.com/SeiGenTa" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                    GitHub
-                </a>
-            </div>
-        </div>
+  <div class="init-content">
+    <div class="text-wrapper">
+      <span class="badge">Desarrollador Full Stack</span>
+
+      <h3 class="subtitle">Ingeniero Civil en Computación · Full Stack</h3>
+
+      <div class="hero-title">
+        <h1>Álvaro<br /><span class="highlight">Martínez</span></h1>
+      </div>
+
+      <p class="description">
+        Ingeniero Civil en Computación especializado en desarrollo web y
+        móvil, con experiencia en aplicaciones de alta disponibilidad y
+        procesos de datos pesados. Exploro nuevas tecnologías como Astro para
+        construir productos rápidos, confiables y de impacto.
+      </p>
+
+      <div class="cta-section">
+        <a href="#projects" class="btn btn-primary">Ver Proyectos</a>
+        <a
+          href="https://github.com/SeiGenTa"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-secondary"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+            ></path>
+          </svg>
+          GitHub
+        </a>
+      </div>
     </div>
+
+    <a href="#about_me" class="scroll-indicator" aria-label="Desplazarse hacia abajo">
+      <span></span>
+    </a>
+  </div>
 </section>
 
 <style>
+  #init {
+    position: relative;
+    width: 100%;
+    min-height: calc(100vh);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px 40px;
+    overflow: hidden;
+  }
+
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    filter: blur(5px) brightness(0.4);
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 40%,
+      rgba(0, 0, 0, 0.3) 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 40%,
+      rgba(0, 0, 0, 0.3) 100%
+    );
+    animation: parallax linear forwards;
+    animation-timeline: scroll();
+    animation-range: 0 30vh;
+    pointer-events: none;
+  }
+
+  @keyframes parallax {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    50% {
+      opacity: 0.5;
+      transform: translateY(2vh);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(5vh);
+    }
+  }
+
+  .init-content {
+    width: 100%;
+    max-width: 900px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    position: relative;
+  }
+
+  .text-wrapper {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .badge {
+    display: inline-block;
+    align-self: center;
+    padding: 8px 16px;
+    background: var(--surface-strong);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .subtitle {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    letter-spacing: -0.3px;
+  }
+
+  .hero-title {
+    margin: 8px 0;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 4.5rem;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1.05;
+    letter-spacing: -2px;
+  }
+
+  .highlight {
+    background: linear-gradient(
+      135deg,
+      var(--accent) 0%,
+      var(--accent-strong) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .description {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    max-width: 600px;
+    font-weight: 500;
+  }
+
+  .cta-section {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all var(--transition);
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+  }
+
+  .btn-primary {
+    background: linear-gradient(
+      135deg,
+      rgba(var(--accent-rgb), 0.2),
+      rgba(var(--accent-rgb), 0.1)
+    );
+    border: 2px solid rgba(var(--accent-rgb), 0.4);
+    color: var(--accent);
+  }
+
+  .btn-primary:hover,
+  .btn-primary:focus-visible {
+    background: linear-gradient(
+      135deg,
+      rgba(var(--accent-rgb), 0.3),
+      rgba(var(--accent-rgb), 0.2)
+    );
+    border-color: rgba(var(--accent-rgb), 0.6);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-accent);
+  }
+
+  .btn-secondary {
+    background: var(--surface-strong);
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+
+  .btn-secondary:hover,
+  .btn-secondary:focus-visible {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--border-strong);
+    transform: translateY(-2px);
+  }
+
+  .scroll-indicator {
+    width: 26px;
+    height: 42px;
+    border: 2px solid var(--border-strong);
+    border-radius: 999px;
+    display: inline-flex;
+    justify-content: center;
+    padding-top: 8px;
+    color: var(--text-secondary);
+    transition: border-color var(--transition), color var(--transition);
+  }
+
+  .scroll-indicator:hover,
+  .scroll-indicator:focus-visible {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .scroll-indicator span {
+    display: block;
+    width: 3px;
+    height: 8px;
+    background: currentColor;
+    border-radius: 2px;
+    animation: scroll-bounce 1.6s ease-in-out infinite;
+  }
+
+  @keyframes scroll-bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(10px);
+      opacity: 0.3;
+    }
+  }
+
+  @media (max-width: 768px) {
     #init {
-        position: relative;
-        width: 100vw;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 60px 20px;
-        overflow: hidden;
-        margin-left: calc(-50vw + 50%);
-        margin-right: calc(-50vw + 50%);
-    }
-
-    .background-image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        object-fit: cover;
-        z-index: 1;
-        filter: blur(5px) brightness(0.4);
-        mask-image: linear-gradient(to bottom, black 0%, black 40%, rgba(0,0,0,0.3) 100%);
-        animation: parallax linear forwards;
-        animation-timeline: scroll();
-        animation-range: 0 30vh;
-        pointer-events: none;
-    }
-
-    @keyframes parallax {
-        0% {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        50% {
-            opacity: 0.5;
-            transform: translateY(2vh);
-        }
-        to {
-            opacity: 0;
-            transform: translateY(5vh);
-        }
-    }
-
-    .init-content {
-        width: 100%;
-        max-width: 900px;
-        z-index: 10;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 40px;
-        position: relative;
-    }
-
-    .text-wrapper {
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .badge {
-        display: inline-block;
-        align-self: center;
-        padding: 8px 16px;
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 20px;
-        font-size: 0.85rem;
-        color: var(--text-secondary);
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        backdrop-filter: blur(10px);
-    }
-
-    .subtitle {
-        margin: 0;
-        font-size: 1.2rem;
-        color: var(--text-secondary);
-        font-weight: 500;
-        letter-spacing: -0.3px;
-    }
-
-    .hero-title {
-        margin: 10px 0;
+      padding: 40px 20px 30px;
     }
 
     h1 {
-        margin: 0;
-        font-size: 4.5rem;
-        font-weight: 800;
-        color: var(--text);
-        line-height: 1.1;
-        letter-spacing: -2px;
+      font-size: 2.8rem;
+      letter-spacing: -1px;
     }
 
-    .highlight {
-        background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+    .subtitle {
+      font-size: 1rem;
     }
 
     .description {
-        margin: 0;
-        font-size: 1.1rem;
-        color: var(--text-secondary);
-        line-height: 1.8;
-        max-width: 600px;
-        font-weight: 500;
+      font-size: 0.95rem;
     }
 
     .cta-section {
-        display: flex;
-        gap: 16px;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-top: 20px;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
     }
 
     .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        padding: 14px 32px;
-        border-radius: 10px;
-        font-weight: 600;
-        font-size: 1rem;
-        text-decoration: none;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        cursor: pointer;
-        border: none;
+      width: 100%;
+      max-width: 300px;
     }
-
-    .btn-primary {
-        background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(0, 204, 106, 0.1));
-        border: 2px solid rgba(0, 255, 136, 0.4);
-        color: #00ff88;
-    }
-
-    .btn-primary:hover {
-        background: linear-gradient(135deg, rgba(0, 255, 136, 0.3), rgba(0, 204, 106, 0.2));
-        border-color: rgba(0, 255, 136, 0.6);
-        transform: translateY(-2px);
-        box-shadow: 0 12px 32px rgba(0, 255, 136, 0.2);
-    }
-
-    .btn-secondary {
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        color: var(--text);
-    }
-
-    .btn-secondary:hover {
-        background: rgba(255, 255, 255, 0.15);
-        border-color: rgba(255, 255, 255, 0.4);
-        transform: translateY(-2px);
-    }
-
-    @media (max-width: 768px) {
-        #init {
-            min-height: 100vh;
-            padding: 40px 20px;
-        }
-
-        h1 {
-            font-size: 2.8rem;
-            letter-spacing: -1px;
-        }
-
-        .subtitle {
-            font-size: 1rem;
-        }
-
-        .description {
-            font-size: 0.95rem;
-        }
-
-        .cta-section {
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-        }
-
-        .btn {
-            width: 100%;
-            max-width: 300px;
-        }
-
-        .scroll-indicator {
-            bottom: 20px;
-        }
-    }
+  }
 </style>

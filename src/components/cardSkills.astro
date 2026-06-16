@@ -1,32 +1,45 @@
 ---
-type Props = {
-  title: string;
-  image: string;
-  skills: string[];
-  skills_image: string[];
+interface Skill {
+  name: string;
+  icon: string;
 }
 
-const { title, image, skills, skills_image } = Astro.props;
+interface Props {
+  title: string;
+  icon: string;
+  skills: Skill[];
+}
+
+const { title, icon, skills } = Astro.props;
 ---
 
 <div class="skill-card">
   <div class="card-header">
     <div class="icon-wrapper">
-      <img src={image} alt={title} class="category-image" />
+      <img src={icon} alt="" class="category-image" width="32" height="32" loading="lazy" />
     </div>
     <h3 class="category-title">{title}</h3>
   </div>
 
   <div class="skills-grid">
-    {skills.map((skill: string, index: number) => (
-      <div class="skill-item">
-        {skills_image[index] && <img src={skills_image[index]} alt={skill} class="skill-icon" />}
-        <span class="skill-name">{skill}</span>
-      </div>
-    ))}
+    {
+      skills.map((skill) => (
+        <div class="skill-item">
+          <img
+            src={skill.icon}
+            alt=""
+            class="skill-icon"
+            width="18"
+            height="18"
+            loading="lazy"
+          />
+          <span class="skill-name">{skill.name}</span>
+        </div>
+      ))
+    }
   </div>
 
-  <div class="card-border"></div>
+  <div class="card-border" aria-hidden="true"></div>
 </div>
 
 <style>
@@ -34,24 +47,34 @@ const { title, image, skills, skills_image } = Astro.props;
     width: 100%;
     max-width: 300px;
     padding: 24px;
-    background: linear-gradient(135deg, var(--card-bg) 0%, rgba(var(--card-rgb), 0.8) 100%);
-    border-radius: 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(
+      135deg,
+      var(--card-bg) 0%,
+      var(--surface-strong) 100%
+    );
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    transition: all var(--transition);
     position: relative;
     overflow: hidden;
   }
 
   .skill-card::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--white-10),
+      transparent
+    );
     transition: left 0.5s ease;
     pointer-events: none;
   }
@@ -62,8 +85,8 @@ const { title, image, skills, skills_image } = Astro.props;
 
   .skill-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
-    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: var(--shadow-md);
+    border-color: var(--border-strong);
   }
 
   .card-header {
@@ -76,16 +99,16 @@ const { title, image, skills, skills_image } = Astro.props;
   .icon-wrapper {
     width: 50px;
     height: 50px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
+    background: var(--surface-strong);
+    border-radius: var(--radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
+    transition: all var(--transition);
   }
 
   .skill-card:hover .icon-wrapper {
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--white-20);
     transform: scale(1.1);
   }
 
@@ -114,14 +137,14 @@ const { title, image, skills, skills_image } = Astro.props;
     align-items: center;
     gap: 8px;
     padding: 8px 10px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    transition: all 0.2s ease;
+    background: var(--surface);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
     cursor: default;
   }
 
   .skill-item:hover {
-    background: rgba(255, 255, 255, 0.12);
+    background: var(--white-12);
     transform: translateX(2px);
   }
 
@@ -146,7 +169,12 @@ const { title, image, skills, skills_image } = Astro.props;
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--white-20),
+      transparent
+    );
     opacity: 0.5;
   }
 </style>

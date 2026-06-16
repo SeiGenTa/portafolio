@@ -1,17 +1,22 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Init from "../sections/init.astro";
-import About from "../sections/about.astro";
 import Projects from "../sections/projects.astro";
+import About from "../sections/about.astro";
 import Skills from "../sections/Skills.astro";
+import Contact from "../sections/contact.astro";
 ---
 
-<Layout title="Portafolio Alvaro M.">
+<Layout
+  title="Álvaro Martínez | Ingeniero Civil en Computación · Full Stack"
+  description="Portafolio de Álvaro Martínez, Ingeniero Civil en Computación y desarrollador Full Stack. Experiencia en aplicaciones de alta disponibilidad, procesos de datos pesados, desarrollo web y móvil con Astro, React, Flutter, Node.js y más."
+>
   <main>
     <Init />
+    <Projects />
     <About />
     <Skills />
-    <Projects />
+    <Contact />
   </main>
 </Layout>
 
@@ -22,10 +27,6 @@ import Skills from "../sections/Skills.astro";
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding-inline: 30px;
-    margin-bottom: 50px;
-  }
-  * {
-    box-sizing: border-box;
+
   }
 </style>

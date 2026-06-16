@@ -1,80 +1,42 @@
 ---
 import CardProject from "../components/cardsProjects.astro";
 import CardsProjectsModal from "../components/cardsProjectsModal.astro";
+import alara from "../assets/projects/alara.png";
+import typescraft from "../assets/projects/typescraft.png";
+import ggoo from "../assets/projects/ggoo.png";
 ---
 
 <section id="projects">
-  <div class="projects-header">
-    <h3 class="title-section">Proyectos</h3>
-    <p class="section-subtitle">Algunos de mis trabajos más destacados</p>
-  </div>
-  <div class="projects-grid">
-    <CardProject
-      title="CLON MERCADO LIBRE"
-      description="Este proyecto es un clon diseñado para mostrar mi experiencia y habilidades en el desarrollo de aplicaciones web, integrando diversas APIs para crear soluciones funcionales y eficientes. A través de este trabajo, reflejo mi capacidad para implementar tecnologías modernas en entornos web."
-      image="mercado_libre.png"
-      url="https://clon-mercado-libre-phi.vercel.app"
-    />
+  <h2 class="title-section">Proyectos</h2>
+  <p class="section-subtitle">Algunos de mis trabajos más destacados</p>
+
+  <div class="projects-grid pt-4">
     <CardProject
       title="ALARA"
       description="Alara es una startup innovadora en seguridad personal. Fui parte del equipo de desarrollo de la aplicación móvil, contribuyendo con funcionalidades clave para mejorar la experiencia del usuario."
-      image="alara.png"
+      image={alara}
       url="https://alara.cl"
     />
     <CardProject
       title="TypesCraft"
       description="Framework frontend innovador que permite construir interfaces web usando únicamente TypeScript, eliminando la necesidad de HTML/CSS tradicional. Ofrece generación automática de componentes tipo-safe, manejo de estado integrado y un sistema de estilos basado en tipos."
-      image="typescraft.png"
+      image={typescraft}
       url="https://typescraft.seigenta.cl"
     />
     <CardProject
-      title="Blog"
-      description="Blog personal donde comparto mis ideas, experiencias y conocimientos adquiridos."
-      image="blog.png"
-      url="https://blog.seigenta.cl"
-    />
-    <CardsProjectsModal
       title="GGOO"
       description="GGOO es una aplicación open source para la comunidad de Volley Beauchef que automatiza el registro a pichangas, gestiona miembros y permite que administradores controlen permisos y validaciones en un solo lugar."
-      details="El proyecto reemplaza el proceso manual por WhatsApp y centraliza la organización de partidos con una experiencia más clara para miembros y administradores. Está construido para crecer con las necesidades de la comunidad y seguir incorporando mejoras como contribuciones y nuevas reglas de participación."
-      image="ggoo.png"
-      highlights={[
-        "Automatiza la inscripción a pichangas y muestra el estado de la lista en tiempo real.",
-        "Incluye gestión de miembros, roles y permisos para administradores.",
-        "Está pensada como una base abierta para seguir evolucionando con la comunidad."
-      ]}
-      techStack={["SvelteKit", "TypeScript", "Prisma", "PostgreSQL", "Docker"]}
-      buttonText="Ver Detalles"
+      image={ggoo}
+      url="https://ggoo.seigenta.cl"
     />
   </div>
 </section>
 
 <style>
   #projects {
-    padding: 80px 20px;
     width: 100%;
-    max-width: 1200px;
+    max-width: var(--section-max-width);
     margin: 0 auto;
-  }
-
-  .projects-header {
-    text-align: center;
-    margin-bottom: 60px;
-  }
-
-  .title-section {
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 0 0 12px 0;
-    color: var(--text);
-    letter-spacing: -0.5px;
-  }
-
-  .section-subtitle {
-    font-size: 1rem;
-    color: var(--text-secondary);
-    margin: 0;
-    font-weight: 500;
   }
 
   .projects-grid {
@@ -85,14 +47,6 @@ import CardsProjectsModal from "../components/cardsProjectsModal.astro";
   }
 
   @media (max-width: 768px) {
-    #projects {
-      padding: 60px 16px;
-    }
-
-    .title-section {
-      font-size: 1.75rem;
-    }
-
     .projects-grid {
       grid-template-columns: 1fr;
       gap: 24px;

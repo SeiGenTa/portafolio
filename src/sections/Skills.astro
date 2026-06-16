@@ -1,58 +1,77 @@
 ---
 import CardSkills from "../components/cardSkills.astro";
+
+interface Skill {
+  name: string;
+  icon: string;
+}
+
+interface SkillGroup {
+  title: string;
+  icon: string;
+  skills: Skill[];
+}
+
+const skillGroups: SkillGroup[] = [
+  {
+    title: "Frontend",
+    icon: "https://cdn.simpleicons.org/html5/ffffff",
+    skills: [
+      { name: "HTML", icon: "https://cdn.simpleicons.org/html5/ffffff" },
+      { name: "CSS", icon: "https://cdn.simpleicons.org/css3/ffffff" },
+      { name: "JavaScript", icon: "https://cdn.simpleicons.org/javascript/ffffff" },
+      { name: "TypeScript", icon: "https://cdn.simpleicons.org/typescript/ffffff" },
+      { name: "React", icon: "https://cdn.simpleicons.org/react/ffffff" },
+      { name: "Astro", icon: "https://cdn.simpleicons.org/astro/ffffff" },
+    ],
+  },
+  {
+    title: "Backend",
+    icon: "https://cdn.simpleicons.org/python/ffffff",
+    skills: [
+      { name: "Python", icon: "https://cdn.simpleicons.org/python/ffffff" },
+      { name: "Node.js", icon: "https://cdn.simpleicons.org/node.js/ffffff" },
+      { name: "Express", icon: "https://cdn.simpleicons.org/express/ffffff" },
+      { name: "FastAPI", icon: "https://cdn.simpleicons.org/fastapi/ffffff" },
+      { name: "Flask", icon: "https://cdn.simpleicons.org/flask/ffffff" },
+      { name: "Django", icon: "https://cdn.simpleicons.org/django/ffffff" },
+    ],
+  },
+  {
+    title: "Frameworks Full Stack",
+    icon: "https://cdn.simpleicons.org/django/ffffff",
+    skills: [
+      { name: "Django", icon: "https://cdn.simpleicons.org/django/ffffff" },
+      { name: "SvelteKit", icon: "https://cdn.simpleicons.org/svelte/ffffff" },
+      { name: "Next.js", icon: "https://cdn.simpleicons.org/nextdotjs/ffffff" },
+    ],
+  },
+  {
+    title: "Database",
+    icon: "https://cdn.simpleicons.org/mongodb/ffffff",
+    skills: [
+      { name: "MongoDB", icon: "https://cdn.simpleicons.org/mongodb/ffffff" },
+      { name: "PostgreSQL", icon: "https://cdn.simpleicons.org/postgresql/ffffff" },
+      { name: "MySQL", icon: "https://cdn.simpleicons.org/mysql/ffffff" },
+      { name: "Firebase", icon: "https://cdn.simpleicons.org/firebase/ffffff" },
+      { name: "SQLite", icon: "https://cdn.simpleicons.org/sqlite/ffffff" },
+    ],
+  },
+];
 ---
 
 <section id="skills">
-  <h3 class="title-section">Habilidades</h3>
-  
+  <h2 class="title-section">Habilidades</h2>
+  <p class="section-subtitle">Stack y herramientas con las que trabajo día a día</p>
+
   <div class="skills-container">
-    <CardSkills
-      title="Frontend"
-      image="https://cdn.simpleicons.org/html5/ffffff"
-      skills={["HTML", "CSS", "JavaScript", "TypeScript", "React", "Astro"]}
-      skills_image={[
-        "https://cdn.simpleicons.org/html5/ffffff",
-        "https://cdn.simpleicons.org/css3/ffffff",
-        "https://cdn.simpleicons.org/javascript/ffffff",
-        "https://cdn.simpleicons.org/typescript/ffffff",
-        "https://cdn.simpleicons.org/react/ffffff",
-        "https://cdn.simpleicons.org/astro/ffffff"
-      ]}
-    />
-
-    <CardSkills
-      title="Backend"
-      image="https://cdn.simpleicons.org/python/ffffff"
-      skills={["Python", "Node.js", "Express", "FastAPI", "Flask", "Django"]}
-      skills_image={[
-        "https://cdn.simpleicons.org/python/ffffff",
-        "https://cdn.simpleicons.org/node.js/ffffff",
-        "https://cdn.simpleicons.org/express/ffffff",
-        "https://cdn.simpleicons.org/fastapi/ffffff",
-        "https://cdn.simpleicons.org/flask/ffffff",
-        "https://cdn.simpleicons.org/django/ffffff"
-      ]}
-    />
-
-    <CardSkills
-      title="Database"
-      image="https://cdn.simpleicons.org/mongodb/ffffff"
-      skills={["MongoDB", "PostgreSQL", "MySQL", "Firebase", "SQLite"]}
-      skills_image={[
-        "https://cdn.simpleicons.org/mongodb/ffffff",
-        "https://cdn.simpleicons.org/postgresql/ffffff",
-        "https://cdn.simpleicons.org/mysql/ffffff",
-        "https://cdn.simpleicons.org/firebase/ffffff",
-        "https://cdn.simpleicons.org/sqlite/ffffff"
-      ]}
-    />
+    {skillGroups.map((group) => <CardSkills title={group.title} icon={group.icon} skills={group.skills} />)}
   </div>
 </section>
 
 <style>
   #skills {
-    padding: 80px 0;
-    max-width: 1200px;
+    max-width: var(--section-max-width);
     margin: 0 auto;
   }
 
@@ -62,12 +81,5 @@ import CardSkills from "../components/cardSkills.astro";
     justify-content: center;
     gap: 30px;
     margin-top: 40px;
-  }
-
-  .title-section {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: var(--text);
   }
 </style>

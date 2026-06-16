@@ -1,238 +1,449 @@
 ---
+import "../styles/tokens.css";
+import { Image } from "astro:assets";
+import perfilImg from "../assets/perfil.jpeg";
+import favicon from "../assets/favicon.svg";
+
 interface Props {
   title: string;
+  description?: string;
 }
 
-const { title } = Astro.props;
+const {
+  title,
+  description = "Portafolio de Álvaro Martínez, Ingeniero Civil en Computación y desarrollador Full Stack. Experiencia en aplicaciones de alta disponibilidad, procesos de datos pesados, y desarrollo web y móvil.",
+} = Astro.props;
+
+const siteUrl = Astro.site?.toString() ?? "https://seigenta.cl/";
+const canonical = new URL(Astro.url.pathname, siteUrl).toString();
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Portafolio dev Alvaro Martinez" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href={favicon.src} />
+    <link rel="canonical" href={canonical} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#2b2b2b" />
+    <meta name="color-scheme" content="dark" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="es_CL" />
+    <meta property="og:site_name" content="Álvaro Martínez" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
     />
-    <title>{title}</title>
   </head>
   <body>
-    <div class="app-bar">
-      <a href="#init" class="image-perfil">
-        <img src="perfil.jpeg" alt="" />
-        <h3>Alvaro martinez</h3>
+    <a href="#main" class="skip-link">Saltar al contenido</a>
+
+    <header class="app-bar" id="app-bar">
+      <a href="#init" class="image-perfil" aria-label="Ir al inicio">
+        <Image
+          src={perfilImg}
+          alt="Foto de perfil de Álvaro Martínez"
+          width={40}
+          height={40}
+          loading="eager"
+        />
+        <span class="profile-name">Álvaro Martínez</span>
       </a>
-      <div class="directions">
-        <a href="#about_me">Acerca de</a>
-        <a href="#skills">Habilidades</a>
-        <a href="#projects">Proyectos</a>
-        <a href="#contact">Contacto</a>
+
+      <nav class="directions" aria-label="Navegación principal">
+        <a href="#projects" data-nav-link>Proyectos</a>
+        <a href="#about_me" data-nav-link>Acerca de</a>
+        <a href="#skills" data-nav-link>Habilidades</a>
+        
+        <a href="#contact" data-nav-link>Contacto</a>
+      </nav>
+
+      <button
+        type="button"
+        class="show-directions"
+        aria-label="Abrir menú de navegación"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        data-menu-toggle
+      >
+        <span class="menu-icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+    </header>
+
+    <nav
+      id="mobile-nav"
+      class="directions-nav-bar"
+      aria-label="Navegación móvil"
+      data-mobile-nav
+    >
+      <a href="#projects" data-nav-link data-mobile-link>Proyectos</a>
+      <a href="#skills" data-nav-link data-mobile-link>Habilidades</a>
+      <a href="#about_me" data-nav-link data-mobile-link>Acerca de</a>
+      <a href="#contact" data-nav-link data-mobile-link>Contacto</a>
+    </nav>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-content">
+        <p class="footer-text">
+          © <span data-current-year>{new Date().getFullYear()}</span> Álvaro
+          Martínez González. Construido con Astro.
+        </p>
+        <a
+          class="footer-link"
+          href="https://github.com/SeiGenTa"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Perfil de GitHub"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            width="20"
+            height="20"
+            aria-hidden="true"
+          >
+            <path
+              d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+            ></path>
+          </svg>
+        </a>
       </div>
-      <div class="show-directions">
-        <span class="material-symbols-outlined"> menu </span>
-        <div class="directions-nav-bar">
-          <a href="#about_me">Acerca de</a>
-          <a href="#skills">Habilidades</a>
-          <a href="#projects">Proyectos</a>
-          <a href="#contact">Contacto</a>
-        </div>
-      </div>
-    </div>
-    <slot />
-  </body>
+    </footer>
 
-  <style>
-    .material-symbols-outlined {
-      font-variation-settings:
-        "FILL" 0,
-        "wght" 400,
-        "GRAD" 0,
-        "opsz" 24;
-    }
-  </style>
-
-  <style is:global>
-    :root {
-      --black: #000000;
-      --green-primary: #013220;
-      --green-secundary: #50c878;
-      --background: #2b2b2b;
-      --background-with-transparence: rgba(43, 43, 43, 0.7);
-      --text: #f5f5f5;
-    }
-
-    .align-center {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .title-section {
-      margin: 0;
-      font-size: 2.5rem;
-      color: var(--green-secundary);
-      align-self: center;
-    }
-    section {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    html {
-      font-family: system-ui, sans-serif;
-      background: var(--background);
-      padding: 0;
-      width: 100%; /* Ocupa el ancho completo de la pantalla */
-      scroll-behavior: smooth;
-    }
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      margin: 0;
-      color: var(--text);
-    }
-  </style>
-
-  <style>
-    .directions-nav-bar {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      background-color: var(--background);
-      position: absolute;
-      top: 60px;
-      right: 0;
-      padding: 10px;
-      box-shadow: var(--black) 0px 0px 2px;
-      display: none;
-    }
-
-    .directions-nav-bar a {
-      text-decoration: none;
-    }
-
-    .directions-nav-bar a:hover {
-      color: var(--green-secundary);
-    }
-
-    code {
-      font-family:
-        Menlo,
-        Monaco,
-        Lucida Console,
-        Liberation Mono,
-        DejaVu Sans Mono,
-        Bitstream Vera Sans Mono,
-        Courier New,
-        monospace;
-    }
-    .image-perfil {
-      display: flex;
-      gap: 20px;
-      flex-direction: row;
-      align-items: center;
-      text-decoration: none;
-    }
-    .image-perfil img {
-      height: 40px;
-      border-radius: 30px;
-    }
-
-    .image-perfil h3 {
-      color: var(--green-secundary);
-    }
-
-    .app-bar {
-      width: 100%;
-      height: 60px;
-      display: flex;
-      position: fixed;
-      flex-direction: row;
-      align-items: center;
-      padding-inline: 10px;
-      justify-content: space-between;
-      background-color: var(--background-with-transparence);
-      backdrop-filter: blur(5px);
-      animation: appBarAnimation linear both;
-      animation-timeline: scroll();
-      animation-range: 0 100px;
-      z-index: 1000;
-    }
-
-    @keyframes appBarAnimation {
-      from {
-        box-shadow: transparent 0px 0px 2px;
-        background-color: transparent;
-        backdrop-filter: blur(0);
-      }
-      to {
-        box-shadow: rgb(20, 20, 20) 0 4px 5px;
+    <style>
+      .app-bar {
+        width: 100%;
+        height: var(--app-bar-height);
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        flex-direction: row;
+        align-items: center;
+        padding-inline: 16px;
+        justify-content: space-between;
         background-color: var(--background-with-transparence);
-        backdrop-filter: blur(5px);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        animation: appBarAnimation linear both;
+        animation-timeline: scroll();
+        animation-range: 0 100px;
+        z-index: 1000;
+        border-bottom: 1px solid transparent;
       }
-    }
 
-    .directions {
-      display: flex;
-      flex-direction: row;
-      gap: 20px;
-    }
-
-    .directions a,
-    .show-directions a {
-      color: var(--green-secundary);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .directions a:hover,
-    .show-directions {
-      color: var(--text);
-    }
-
-    .show-directions {
-      display: none;
-      height: 100%;
-      align-items: center;
-    }
-
-    .row {
-      display: flex;
-      flex-direction: row;
-    }
-
-    .align-center {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    @media (max-width: 660px) {
-      .directions {
-        display: none;
+      @keyframes appBarAnimation {
+        from {
+          border-bottom-color: transparent;
+          background-color: transparent;
+          backdrop-filter: blur(0);
+          -webkit-backdrop-filter: blur(0);
+        }
+        to {
+          border-bottom-color: var(--border);
+          background-color: var(--background-with-transparence);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+        }
       }
-      .show-directions {
+
+      .image-perfil {
         display: flex;
+        gap: 12px;
+        align-items: center;
+        text-decoration: none;
         color: var(--green-secundary);
-        gap: 10px;
+        font-weight: 600;
+        font-size: 0.95rem;
       }
 
-      .show-directions span {
-        transition: transform 0.3s;
+      .image-perfil img {
+        height: 36px;
+        width: 36px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--border);
       }
 
-      .show-directions:hover span {
-        transform: rotateZ(90deg);
+      .profile-name {
+        color: var(--green-secundary);
       }
 
-      .show-directions:hover .directions-nav-bar {
+      .directions {
         display: flex;
+        flex-direction: row;
+        gap: 28px;
+        align-items: center;
       }
-    }
-  </style>
+
+      .directions a,
+      .directions-nav-bar a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.95rem;
+        position: relative;
+        padding: 4px 0;
+        transition: color var(--transition);
+      }
+
+      .directions a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 0;
+        height: 2px;
+        background: var(--accent);
+        transition: width var(--transition);
+      }
+
+      .directions a:hover,
+      .directions a:focus-visible,
+      .directions a.is-active {
+        color: var(--accent);
+      }
+
+      .directions a:hover::after,
+      .directions a:focus-visible::after,
+      .directions a.is-active::after {
+        width: 100%;
+      }
+
+      .show-directions {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        background: transparent;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        cursor: pointer;
+        color: var(--text);
+        transition: background var(--transition), border-color var(--transition);
+      }
+
+      .show-directions:hover,
+      .show-directions:focus-visible {
+        background: var(--surface);
+        border-color: var(--border-strong);
+      }
+
+      .menu-icon {
+        display: inline-flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 22px;
+      }
+
+      .menu-icon span {
+        display: block;
+        height: 2px;
+        background: currentColor;
+        border-radius: 2px;
+        transition: transform var(--transition), opacity var(--transition);
+      }
+
+      .show-directions[aria-expanded="true"] .menu-icon span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .show-directions[aria-expanded="true"] .menu-icon span:nth-child(2) {
+        opacity: 0;
+      }
+      .show-directions[aria-expanded="true"] .menu-icon span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      .directions-nav-bar {
+        position: fixed;
+        top: var(--app-bar-height);
+        right: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        padding: 12px;
+        background: var(--background);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-md);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+        transition:
+          opacity var(--transition),
+          transform var(--transition),
+          visibility 0s linear var(--transition);
+        z-index: 999;
+        min-width: 180px;
+      }
+
+      .directions-nav-bar.is-open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        transition:
+          opacity var(--transition),
+          transform var(--transition),
+          visibility 0s;
+      }
+
+      .directions-nav-bar a {
+        padding: 8px 12px;
+        border-radius: 6px;
+        transition: background var(--transition-fast), color var(--transition);
+      }
+
+      .directions-nav-bar a:hover,
+      .directions-nav-bar a:focus-visible {
+        color: var(--accent);
+        background: var(--surface);
+      }
+
+      .site-footer {
+        width: 100%;
+        border-top: 1px solid var(--border);
+        padding: 24px 20px;
+        margin-top: 40px;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .footer-text {
+        margin: 0;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+
+      .footer-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: color var(--transition), background var(--transition);
+      }
+
+      .footer-link:hover,
+      .footer-link:focus-visible {
+        color: var(--accent);
+        background: var(--surface);
+      }
+
+      @media (max-width: 720px) {
+        .directions {
+          display: none;
+        }
+        .show-directions {
+          display: inline-flex;
+        }
+        .profile-name {
+          display: none;
+        }
+      }
+    </style>
+
+    <script>
+      const menuToggle = document.querySelector("[data-menu-toggle]");
+      const mobileNav = document.querySelector("[data-mobile-nav]");
+      const mobileLinks = document.querySelectorAll("[data-mobile-link]");
+
+      const setMenuOpen = (open: boolean) => {
+        if (!menuToggle || !mobileNav) return;
+        menuToggle.setAttribute("aria-expanded", String(open));
+        menuNavToggle(mobileNav, open);
+      };
+
+      const menuNavToggle = (nav: Element, open: boolean) => {
+        if (open) {
+          nav.classList.add("is-open");
+        } else {
+          nav.classList.remove("is-open");
+        }
+      };
+
+      if (menuToggle && mobileNav) {
+        menuToggle.addEventListener("click", () => {
+          const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+          setMenuOpen(!isOpen);
+        });
+
+        document.addEventListener("click", (event) => {
+          if (!(event.target instanceof Node)) return;
+          const isInside = mobileNav.contains(event.target) || menuToggle.contains(event.target);
+          if (!isInside) {
+            setMenuOpen(false);
+          }
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") {
+            setMenuOpen(false);
+          }
+        });
+
+        mobileLinks.forEach((link) => {
+          link.addEventListener("click", () => setMenuOpen(false));
+        });
+      }
+
+      const navLinks = document.querySelectorAll("[data-nav-link]");
+      const sections = Array.from(document.querySelectorAll<HTMLElement>("main section[id]"));
+
+      if (sections.length && navLinks.length) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              const id = entry.target.id;
+              navLinks.forEach((link) => {
+                const href = link.getAttribute("href");
+                if (href === `#${id}`) {
+                  link.classList.add("is-active");
+                } else {
+                  link.classList.remove("is-active");
+                }
+              });
+            });
+          },
+          { rootMargin: "-40% 0px -50% 0px", threshold: 0 },
+        );
+
+        sections.forEach((section) => observer.observe(section));
+      }
+    </script>
+  </body>
 </html>
